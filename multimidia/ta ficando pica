@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+<style>
+canvas {
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+ }
+</style>
+<body>
+	 <title>Herois da Matematica</title>
+        <link rel="shortcut icon" href="h.png" type="image/png">
+<canvas id="myCanvas" width="600" height="780" style="border:0px solid #000000;">
+</canvas>
+<script>
+
+	var canvas = document.getElementById("myCanvas");
+	var context = canvas.getContext("2d");
+	var cb = canvas.getBoundingClientRect();
+	
+    
+	var fundo = new Image(); 
+	var menu = new Image();
+	var como = new Image();
+	var creditos = new Image();
+	var voltar = new Image();
+	var fasesdesatanas = new Image();
+	//var quest1 = new Image();
+	
+	var voltarx = 0;
+	 var voltary = 710;
+	 var voltarw = 65;
+	 var voltarh = 57;   
+	
+	fundo.src = 'fundo.jpg';
+	menu.src = 'menu.jpg'	
+	como.src = 'como.png'	
+	creditos.src = 'creditos.png'	
+	fasesdesatanas.src = 	'fases.png'
+	voltar.src = 'voltar.png'
+
+	canvas.addEventListener("mousemove", mouseMove);
+	canvas.addEventListener("mousedown", mouseDown);
+	canvas.addEventListener("mouseup", mouseUp);
+	
+	// criando funções para uso do teclado 
+
+	
+	var mousepressed = false;
+	
+	var mouse_x = 0;
+	var mouse_y = 0;	
+	var play = false;
+	var how = false;
+	var credit = false;
+	var main = true;
+	var nivel = false
+	var tela = false;
+	
+	
+
+	function mouseMove(e)
+	{
+		mouse_x = e.x- cb.left -0.5;
+		mouse_y = e.y- cb.top ;
+		console.log(mouse_x , mouse_y);
+	}
+	
+	function mouseDown(e)
+	{
+		mousepressed = true;
+	}
+	function mouseUp(e)
+	{
+		mousepressed = false;
+	}
+	
+	function menu1()
+	{
+		context.clearRect(0,0,canvas.width,canvas.height);
+		context.drawImage(menu,0,0,canvas.width,canvas.height);
+		
+        if(mouse_x >= 160 && mouse_x <= 472 && mouse_y >= 340 && mouse_y <= 400 && mousepressed && how == false && credit == false) nivel = true;
+		if(mouse_x >= 160 && mouse_x <= 473 && mouse_y >= 445 && mouse_y <= 500 && mousepressed && play== false && credit == false) how = true;
+		if(mouse_x >= 160 && mouse_x <= 473 && mouse_y >= 544 && mouse_y <= 600 && mousepressed && play == false && how == false) credit = true;
+	}
+
+	
+	function wtf()
+	{
+		context.clearRect(0,0,canvas.width,canvas.height);
+		context.drawImage(como,0,0,canvas.width,canvas.height);
+		context.drawImage(voltar,voltarx,voltary,voltarw,voltarh);
+	
+	if(mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed)
+		{
+			menu1(); 
+			how = false;
+		}
+	}
+	
+	function nomes()
+	{
+	context.clearRect(0,0,canvas.width,canvas.height);
+	context.drawImage(creditos,0,0,canvas.width,canvas.height);
+	context.drawImage(voltar,voltarx,voltary,voltarw,voltarh);
+	
+	if(mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed) 
+		{
+			menu1(); 
+			credit = false;
+		}
+	}
+	
+	function fases()
+	{
+	context.clearRect(0,0,canvas.width,canvas.height);
+	context.drawImage(fasesdesatanas,0,0,canvas.width,canvas.height);
+	context.drawImage(voltar,voltarx,voltary,voltarw,voltarh);
+	
+	if(mouse_x >= 536 && mouse_x <= 846 && mouse_y >= 217 && mouse_y <= 275 && mousepressed) tela= true;
+	
+	
+	if(mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed)
+		{
+			menu1(); 
+			nivel = false;
+		}
+	}
+	
+	function tela1(){
+		context.clearRect(0,0,canvas.width,canvas.height);
+	
+	var point = 0;
+		var ready = true;
+	       
+		   function avaible() {
+				   if (ready == true) { 
+					point += 1;
+					
+					setTimeout(avaible, 400)
+					console.log(avaible)
+                }
+		}
+	function  queste1 ()
+	{}
+			
+	avaible();
+	}
+	
+
+	
+	// ciclo da aplicação
+	function loop() {
+		if (main == true) menu1();
+		if (tela == true)tela1();
+		if (how == true) wtf();
+		if (credit == true) nomes();
+		if (nivel == true )fases();
+	
+			
+		setTimeout(loop, 30);
+		//console.log(teclas);
+	}
+	
+	loop();
+
+	
+
+	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html>
+<style>
+    canvas {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+</style>
+
+<body>
+    <title>Herois da Matematica</title>
+    <link rel="shortcut icon" href="h.png" type="image/png">
+    <canvas id="myCanvas" width="600" height="780" style="border:0px solid #000000;">
+    </canvas>
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var context = canvas.getContext("2d");
+        var cb = canvas.getBoundingClientRect();
+
+
+        var fundo = new Image();
+        var menu = new Image();
+        var como = new Image();
+        var creditos = new Image();
+        var voltar = new Image();
+        var fasesdesatanas = new Image();
+         //var quest1 = new Image();
+
+        var voltarx = 0;
+        var voltary = 710;
+        var voltarw = 65;
+        var voltarh = 57;
+		
+		var continuix = 543;
+		var continuiy = 710;
+		var continuiw = 65;
+		var continuih = 57
+
+        var imagem_x = 0;
+        imagem_y = 0;
+        imagem_w = canvas.width;
+        imagem_h = canvas.height;
+		
+		var pontos1 = 1000
+		var pontos2 = 1000
+		var pontos3 = 1000
+		var pontos4 = 1000
+		
+		// estrelas 
+		var estrelas = new Image();
+		estrelas.src = 'multimidia/estrelas/estrelas.png';
+		var estrelas2 = new Image();
+		estrelas.src = 'multimidia/estrelas/estrelas2.png';
+		var estrelas3 = new Image();
+		estrelas.src = 'multimidia/estrelas/estrelas3.png';
+		var vidas = 3 
+		var vidas2 = 3 
+		var vidas3 = 3 
+		var vidas4 = 3 
+		
+		var vida = {
+            x: -50,
+            y: 0,
+            w: canvas.width,
+            h: canvas.height
+        }
+        var vida2 = {
+            x: 10,
+            y: 0,
+            w: canvas.width,
+            h: canvas.height
+        }
+        var vida3 = {
+            x: 10,
+            y: 0,
+            w: canvas.width,
+            h: canvas.height
+        }
+		
+		var f4 = {
+		q1: new Image(),	
+		q2: new Image(),
+		q3: new Image(),
+		q4: new Image(),
+		q5: new Image(),
+		q6: new Image(),
+		q7: new Image(),
+		q8: new Image(),
+		q9: new Image(),
+		q10: new Image(),
+		}
+
+         // fase 3 
+
+		var f3 = {
+		q1: new Image(),	
+		q2: new Image(),
+		q3: new Image(),
+		q4: new Image(),
+		q5: new Image(),
+		q6: new Image(),
+		q7: new Image(),
+		q8: new Image(),
+		q9: new Image(),
+		q10: new Image(),
+		}
+		
+		var f2 = {
+		q1: new Image(),	
+		q2: new Image(),
+		q3: new Image(),
+		q4: new Image(),
+		q5: new Image(),
+		q6: new Image(),
+		q7: new Image(),
+		q8: new Image(),
+		q9: new Image(),
+		q10: new Image(),
+		}	
+		var f = {
+		q1: new Image(),	
+		q2: new Image(),
+		q3: new Image(),
+		q4: new Image(),
+		q5: new Image(),
+		q6: new Image(),
+		q7: new Image(),
+		q8: new Image(),
+		q9: new Image(),
+		q10: new Image(),
+		}
+		f4.q1.src = 'multimidia/faseGOD/1-1.jpg';
+        f4.q2.src = 'multimidia/faseGOD/2-4.jpg';
+        f4.q3.src = 'multimidia/faseGOD/3-2.jpg';
+        f4.q4.src = 'multimidia/faseGOD/4-3.jpg';
+		f4.q5.src = 'multimidia/faseGOD/5-4.jpg';
+        f4.q6.src = 'multimidia/faseGOD/6-3.jpg';
+        f4.q7.src = 'multimidia/faseGOD/7-2.jpg';
+        f4.q8.src = 'multimidia/faseGOD/8-1.jpg';
+		f4.q9.src = 'multimidia/faseGOD/9-2.jpg';
+        f4.q10.src = 'multimidia/faseGOD/10-4.jpg';
+		
+        f3.q1.src = 'multimidia/fase 3/1-3.png';
+        f3.q2.src = 'multimidia/fase 3/3-2.png';
+        f3.q3.src = 'multimidia/fase 3/3-4.png';
+        f3.q4.src = 'multimidia/fase 3/4-1.png';
+		f3.q5.src = 'multimidia/fase 3/5-2.png';
+        f3.q6.src = 'multimidia/fase 3/6-4.png';
+        f3.q7.src = 'multimidia/fase 3/7-1.jpg';
+        f3.q8.src = 'multimidia/fase 3/9-2.png';
+		f3.q9.src = 'multimidia/fase 3/8-3.png';
+        f3.q10.src = 'multimidia/fase 3/10-2.png';
+		
+		f2.q1.src = 'multimidia/fase2/1-1.png';
+        f2.q2.src = 'multimidia/fase2/2-3.png';
+        f2.q3.src = 'multimidia/fase2/3-1.png';
+        f2.q4.src = 'multimidia/fase2/4-4.png';
+		f2.q5.src = 'multimidia/fase2/5-2.png';
+        f2.q6.src = 'multimidia/fase2/6-3.png';
+        f2.q7.src = 'multimidia/fase2/7-2.png';
+        f2.q8.src = 'multimidia/fase2/9-1.png';
+		f2.q9.src = 'multimidia/fase2/8-4.png';
+        f2.q10.src = 'multimidia/fase2/10-1.png';		
+		
+		f.q1.src = 'multimidia/fase1/1-4.png';
+        f.q2.src = 'multimidia/fase1/2-3.png';
+        f.q3.src = 'multimidia/fase1/3-4.png';
+        f.q4.src = 'multimidia/fase1/4-3.png';
+		f.q5.src = 'multimidia/fase1/5-2.png';
+        f.q6.src = 'multimidia/fase1/6-3.jpg';
+        f.q7.src = 'multimidia/fase1/7-2.jpg';
+        f.q8.src = 'multimidia/fase1/9-4.jpg';
+		f.q9.src = 'multimidia/fase1/8-1.jpg';
+        f.q10.src = 'multimidia/fase1/10-1.jpg';
+
+						
+		var imagem01 = new Image;
+        imagem01.src = 'multimidia/imagens1/0%.png'
+        var imagem02 = new Image;
+        imagem02.src = 'multimidia/imagens1/10%.png'
+        var imagem03 = new Image;
+        imagem03.src = 'multimidia/imagens1/20%.png'
+        var imagem04 = new Image;
+        imagem04.src = 'multimidia/imagens1/30%.png'
+        var imagem05 = new Image;
+        imagem05.src = 'multimidia/imagens1/40%.png'
+        var imagem06 = new Image;
+        imagem06.src = 'multimidia/imagens1/50%.png'
+        var imagem07 = new Image;
+        imagem07.src = 'multimidia/imagens1/60%.png'
+        var imagem08 = new Image;
+        imagem08.src = 'multimidia/imagens1/70%.png'
+        var imagem09 = new Image;
+        imagem09.src = 'multimidia/imagens1/80%.png'
+        var imagem010 = new Image;
+        imagem010.src = 'multimidia/imagens1/90%.png'
+        var imagem011 = new Image;
+        imagem011.src = 'multimidia/imagens1/100%.png'
+		
+		var wins1 = false ;
+		var vitoria1 = new Image();
+		vitoria1.src = 'multimidia/vitoria/fase1.png';
+		var continui1 = new Image();
+		continui1.src = 'multimidia/vitoria/continue.png'
+		       
+	   var pergunta01 = false
+		pergunta02 = false;
+        pergunta03 = false;
+        pergunta04 = false;
+        pergunta05 = false;
+        pergunta06 = false;
+        pergunta07 = false;
+        pergunta08 = false;
+        pergunta09 = false;
+        pergunta010 = false;
+		pergunta011 = false;
+		
+		//  QUESTAO 3 PORRA
+        var imagem1 = new Image;
+        imagem1.src = 'multimidia/imagens/0%.png'
+        var imagem2 = new Image;
+        imagem2.src = 'multimidia/imagens/10%.png'
+        var imagem3 = new Image;
+        imagem3.src = 'multimidia/imagens/20%.png'
+        var imagem4 = new Image;
+        imagem4.src = 'multimidia/imagens/30%.png'
+        var imagem5 = new Image;
+        imagem5.src = 'multimidia/imagens/40%.png'
+        var imagem6 = new Image;
+        imagem6.src = 'multimidia/imagens/50%.png'
+        var imagem7 = new Image;
+        imagem7.src = 'multimidia/imagens/60%.png'
+        var imagem8 = new Image;
+        imagem8.src = 'multimidia/imagens/70%.png'
+        var imagem9 = new Image;
+        imagem9.src = 'multimidia/imagens/80%.png'
+        var imagem10 = new Image;
+        imagem10.src = 'multimidia/imagens/90%.png'
+        var imagem11 = new Image;
+        imagem11.src = 'multimidia/imagens/100%.png'
+		// FASE 2 PORRA
+		
+		  var imagem11 = new Image;
+        imagem11.src = 'multimidia/imagens2/0%.png'
+        var imagem22 = new Image;
+        imagem22.src = 'multimidia/imagens2/10%.png'
+        var imagem33 = new Image;
+        imagem33.src = 'multimidia/imagens2/20%.png'
+        var imagem444 = new Image;
+        imagem444.src = 'multimidia/imagens2/30%.png'
+        var imagem55 = new Image;
+        imagem55.src = 'multimidia/imagens2/40%.png'
+        var imagem66 = new Image;
+        imagem66.src = 'multimidia/imagens2/50%.png'
+        var imagem77 = new Image;
+        imagem77.src = 'multimidia/imagens2/60%.png'
+        var imagem88 = new Image;
+        imagem88.src = 'multimidia/imagens2/70%.png'
+        var imagem99 = new Image;
+        imagem99.src = 'multimidia/imagens2/80%.png'
+        var imagem100 = new Image;
+        imagem100.src = 'multimidia/imagens2/90%.png'
+        var imagem111 = new Image;
+        imagem111.src = 'multimidia/imagens2/100%.png'
+		
+		
+		  var imagem40 = new Image;
+        imagem40.src = 'multimidia/imagens4/0%.png'
+        var imagem41 = new Image;
+        imagem41.src = 'multimidia/imagens4/10%.png'
+        var imagem42 = new Image;
+        imagem42.src = 'multimidia/imagens4/20%.png'
+        var imagem43 = new Image;
+        imagem43.src = 'multimidia/imagens4/30%.png'
+        var imagem44 = new Image;
+        imagem44.src = 'multimidia/imagens4/40%.png'
+        var imagem45 = new Image;
+        imagem45.src = 'multimidia/imagens4/50%.png'
+        var imagem46 = new Image;
+        imagem46.src = 'multimidia/imagens4/60%.png'
+        var imagem47 = new Image;
+        imagem47.src = 'multimidia/imagens4/70%.png'
+        var imagem48 = new Image;
+        imagem48.src = 'multimidia/imagens4/80%.png'
+        var imagem49 = new Image;
+        imagem49.src = 'multimidia/imagens4/90%.png'
+        var imagem50 = new Image;
+        imagem50.src = 'multimidia/imagens4/100%.png'
+		
+		var gameover = new Image
+			gameover.src = 'multimidia/LOOSE.png'
+		
+		
+		// fase 3
+        var pergunta = false;
+		pergunta2 = false;
+        pergunta3 = false;
+        pergunta4 = false;
+        pergunta5 = false;
+        pergunta6 = false;
+        pergunta7 = false;
+        pergunta8 = false;
+        pergunta9 = false;
+        pergunta10 = false;
+		pergunta11 = false;
+		var vitoria3 = new Image();
+		vitoria3.src = 'multimidia/vitoria/fase3.png';
+		var wins3 = false;
+		var continui3 = new Image();
+		continui3.src = 'multimidia/vitoria/continue.png'
+		
+		//fase 4
+	
+        var pergunta40 = false
+        pergunta41 = false;
+        pergunta42 = false;
+        pergunta43 = false;
+        pergunta444 = false;
+        pergunta45 = false;
+        pergunta46= false;
+        pergunta47 = false;
+        pergunta48 = false;
+		pergunta49 = false;
+		var vitoria4 = new Image();
+		vitoria4.src = 'multimidia/vitoria/fase4.png';	
+		var continui4 = new Image();
+		continui4.src = 'multimidia/vitoria/continue.png';
+		var wins4 = false;
+		var fim = new Image();
+		fim.src = 'multimidia/vitoria/fim.png';
+		
+		
+		// fase2
+        var pergunta11 = false
+		pergunta22 = false;
+        pergunta33 = false;
+        pergunta44 = false;
+        pergunta55 = false;
+        pergunta66 = false;
+        pergunta77 = false;
+        pergunta88 = false;
+        pergunta99 = false;
+        pergunta100 = false;
+		pergunta111 = false;
+		
+		var wins2 = false;
+		
+		var vitoria2 = new Image();
+			vitoria2.src = 'multimidia/vitoria/fase2.png';
+		var continui2 = new Image();
+			continui2.src = 'multimidia/vitoria/continue.png'
+
+         ///////////////////////////// 
+
+        fundo.src = 'multimidia/fundo.jpg';
+        menu.src = 'multimidia/menu.jpg'
+        como.src = 'multimidia/como.png'
+        creditos.src = 'multimidia/creditos.png'
+        fasesdesatanas.src = 'multimidia/fases.png'
+        voltar.src = 'multimidia/voltar.png'
+
+
+
+        canvas.addEventListener("mousemove", mouseMove);
+        canvas.addEventListener("mousedown", mouseDown);
+        canvas.addEventListener("mouseup", mouseUp);
+
+         // criando funções para uso do teclado 
+
+
+        var mousepressed = false;
+
+        var mouse_x = 0;
+        var mouse_y = 0;
+        var play = false;
+        var how = false;
+        var credit = false;
+        var main = true;
+        var nivel = false
+        var tela = false;
+        var tela2 = false;
+        var tela3 = false;
+        var tela4 = false;
+
+
+        function mouseMove(e) {
+            mouse_x = e.x - cb.left - 0.5;
+            mouse_y = e.y - cb.top;
+            console.log(mouse_x, mouse_y);
+        }
+
+        function mouseDown(e) {
+            mousepressed = true;
+        }
+
+        function mouseUp(e) {
+            mousepressed = false;
+        }
+		
+		
+		function drawText(x,y,text)
+		{
+			context.fillStyle = "#000000";
+			context.font = "100px Arial";
+			context.fillText(text, x, y);		
+		}
+
+        function menu1() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(menu, 0, 0, canvas.width, canvas.height);
+
+            if (mouse_x >= 160 && mouse_x <= 472 && mouse_y >= 340 && mouse_y <= 400 && mousepressed && how == false && credit == false) nivel = true;
+            if (mouse_x >= 160 && mouse_x <= 473 && mouse_y >= 445 && mouse_y <= 500 && mousepressed && play == false && credit == false) how = true;
+            if (mouse_x >= 160 && mouse_x <= 473 && mouse_y >= 544 && mouse_y <= 600 && mousepressed && play == false && how == false) credit = true;
+        }
+
+
+        function wtf() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(como, 0, 0, canvas.width, canvas.height);
+            context.drawImage(voltar, voltarx, voltary, voltarw, voltarh);
+
+            if (mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed) {
+                menu1();
+                how = false;
+            }
+        }
+
+        function nomes() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(creditos, 0, 0, canvas.width, canvas.height);
+            context.drawImage(voltar, voltarx, voltary, voltarw, voltarh);
+
+            if (mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed) {
+                menu1();
+                credit = false;
+            }
+        }
+
+        function fases() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(fasesdesatanas, 0, 0, canvas.width, canvas.height);
+            context.drawImage(voltar, voltarx, voltary, voltarw, voltarh);
+
+            if(mouse_x >= 163 && mouse_x <= 472 && mouse_y >= 268 && mouse_y <= 326 && mousepressed) {tela= true,nivel = false; pergunta01 = true}
+            if(mouse_x >= 163 && mouse_x <= 472 && mouse_y >= 402 && mouse_y <= 465 && mousepressed) {tela2 = true,nivel = false, pergunta11 = true}
+            if (mouse_x >= 163 && mouse_x <= 472 && mouse_y >= 543 && mouse_y <= 602 && mousepressed) {tela3 = true, nivel = false, pergunta = true}
+            if (mouse_x >= 163 && mouse_x <= 475 && mouse_y >= 685 && mouse_y <= 740&& mousepressed) {tela4 = true, nivel = false, pergunta40 = true}
+
+            if (mouse_x >= 1 && mouse_x <= 59 && mouse_y >= 713 && mouse_y <= 757 && mousepressed) {
+                menu1();
+                nivel = false;
+            }
+        }
+		
+        function fase1() {
+			if (pergunta01)
+			{
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q1, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem01, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta02 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			
+			if (pergunta02)
+			{
+				pergunta01 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q2, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem02, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta03 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			if (pergunta03)
+			{
+				pergunta02 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q3, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem03, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta04 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			
+			if (pergunta04)
+			{
+				pergunta03 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q4, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem04, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta05 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+           	if (pergunta05)
+			{
+				pergunta04 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q5, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem05, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta06 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+           	if (pergunta06)
+			{
+				pergunta05 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q6, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem06, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta07 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			
+           	if (pergunta07)
+			{
+				pergunta06 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q7, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem07, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta08 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			
+			
+           	if (pergunta08)
+			{
+				pergunta07 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q8, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem08, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta09 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+         
+			if (pergunta09)
+			{
+				pergunta08 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q9, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem09, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta10 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+			if (pergunta10)
+			{
+				pergunta09 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f.q10, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem010, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					wins1 = true
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas -=1;	
+					mousepressed = false;
+				}
+			}
+
+			if(wins1 == true ){
+			context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(vitoria1,0,0,canvas.width,canvas.height)
+			context.drawImage(continui1,continuix,continuiy,continuiw,continuih)
+			context.fillStyle = "#000000";
+			context.font = "80px Arial";
+			context.fillText(pontos1 + " pts" ,100, 760);
+			if (mouse_x >= 544 && mouse_x <= 599 && mouse_y >= 713 && mouse_y <= 757 && mousepressed){
+			mousepressed = false;
+			tela = false ;
+			tela2 = true;
+			wins1 = false;
+			main = false;
+			pergunta11 = true
+			}       
+		}
+
+       }
+
+			
+	/*f2.q1.src = 'fase2/1-1.png';
+        f2.q2.src = 'fase2/2-3.png';
+        f2.q3.src = 'fase2/3-1.png';
+        f2.q4.src = 'fase2/4-4.png';
+		f2.q5.src = 'fase2/5-2.png';
+        f2.q6.src = 'fase2/6-3.png';
+        f2.q7.src = 'fase2/7-2.png';
+        f2.q8.src = 'fase2/9-1.png';
+		f2.q9.src = 'fase2/8-4.png';
+        f2.q10.src = 'fase2/10-1.png';*/
+	
+	
+        function fase2() {
+            
+			if (pergunta11)
+			{
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q1, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem11, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta22 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+			}
+			
+			if (pergunta22)
+			{
+				pergunta11 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q2, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem22, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta33 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+			}
+			if (pergunta33)
+			{
+				pergunta22 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q3, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem33, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta444 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+			}
+			if (pergunta444) {
+			
+				pergunta33 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q4, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem444, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta55 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            if (pergunta55) {
+				pergunta444 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q5, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem55, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta66 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			 if (pergunta66) {
+				pergunta55 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q6, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem66, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta77 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			 if (pergunta77) {
+				pergunta66 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q7, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem77, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta88 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+			   
+            }
+			
+			
+			if (pergunta88) {
+				pergunta77 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q8, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem88, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta99 = true;
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+            }
+			    if (pergunta99) {
+				pergunta88 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q9, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem99, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta100 = true
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -=1;	
+					mousepressed = false;
+				}
+                 
+            }
+            
+            if (pergunta100) {
+				pergunta99 = false
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f2.q10, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem100, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas2 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					wins2 = true
+				}
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas2 -= 1;	
+					mousepressed = false;
+				}
+            }
+			
+			if(wins2 == true ){
+			context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(vitoria2,0,0,canvas.width,canvas.height)
+			context.drawImage(continui2,continuix,continuiy,continuiw,continuih)
+			context.fillStyle = "#000000";
+			context.font = "80px Arial";
+			context.fillText(pontos2 + " pts" ,100, 760);
+			if (mouse_x >= 544 && mouse_x <= 599 && mouse_y >= 713 && mouse_y <= 757 && mousepressed){
+			mousepressed = false;
+			tela2 = false ;
+			tela4 = true;
+			wins2 = false;
+			main = false;
+			pergunta40 = true
+			}       
+		}
+        }
+
+        var imagem_x = 0;
+        imagem_y = 0;
+        imagem_w = canvas.width;
+        imagem_h = canvas.height;
+		
+		   var imagem_x2 = 0;
+        imagem_y2 = 0;
+		imagem_w2 = canvas.width;
+        imagem_h2 = canvas.height;
+		
+		    function fase3() {
+            if (pergunta)
+			{
+				context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q1, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem1, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta2 = true;
+				}
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+					mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+					mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed) 
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+			}
+            if (pergunta2) {
+				pergunta = false;
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q2, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem2, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta3 = true;
+				}
+				
+				if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            if (pergunta3) {
+				pergunta2 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q3, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem3, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta4 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			if (pergunta4) {
+				pergunta3 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q4, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem4, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta5 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            
+            if (pergunta5) {
+				pergunta4 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q5, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem5, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta6 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+		if (pergunta6) {
+				pergunta5 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q6, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem6, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta7 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			 if (pergunta7) {
+				pergunta6 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q7, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem7, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta8 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+			   
+            }
+			if (pergunta8) {
+				pergunta7 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q8, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem8, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta9 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+		
+			
+			    if (pergunta9) {
+				pergunta8 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q9, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem9, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta10 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+                }
+      		
+            if (pergunta10) {
+				pergunta9 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f3.q10, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem10, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas3 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					wins3 = true;
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas3 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			if(wins3 == true ){
+			context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(vitoria3,0,0,canvas.width,canvas.height)
+			context.drawImage(continui3,continuix,continuiy,continuiw,continuih)
+			context.fillStyle = "#000000";
+			context.font = "80px Arial";
+			context.fillText(pontos3 + " pts" ,100, 760);
+			if (mouse_x >= 544 && mouse_x <= 599 && mouse_y >= 713 && mouse_y <= 757 && mousepressed){
+			mousepressed = false;
+			tela3 = false ;
+			tela4 = true;
+			wins3 = false;
+			main = false;
+			pergunta40 = true 
+			}             
+		}
+		
+	}
+        /*f4.q1.src = 'faseGOD/1-1.jpg';
+        f4.q2.src = 'faseGOD/2-4.jpg';
+        f4.q3.src = 'faseGOD/3-2.jpg';
+        f4.q4.src = 'faseGOD/4-3.jpg';
+		f4.q5.src = 'faseGOD/5-4.jpg';
+        f4.q6.src = 'faseGOD/6-3.jpg';
+        f4.q7.src = 'faseGOD/7-2.jpg';
+        f4.q8.src = 'faseGOD/8-1.jpg';
+		f4.q9.src = 'faseGOD/9-2.jpg';
+        f4.q10.src = 'faseGOD/10-4.jpg';*/
+		
+
+        function fase4() {
+            if (pergunta40) {
+
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q1, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem40, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta41 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+
+            if (pergunta41) {
+			pergunta40 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q2, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem41, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta42 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+            
+            if (pergunta42) {
+			pergunta41 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q3, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem42, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta43 = true
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            if (pergunta43) {
+			pergunta42 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q4, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem43, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta44 = true
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            
+            if (pergunta44) {
+			pergunta43 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q5, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem44, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta45 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+            
+		
+            if (pergunta45) {
+			pergunta44 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q6, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem45, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta46 = true
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+            if (pergunta46) {
+				pergunta45 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q7, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem46, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta47 = true
+				}
+				
+				if(mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+            }
+			
+			
+            if (pergunta47) {
+			pergunta46 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q8, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem47, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta48 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+
+            }	
+			
+            if (pergunta48) {
+			pergunta47 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q9, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem48, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed)
+				{
+					mousepressed = false;
+					pergunta49 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720&& mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+
+            }	
+			
+			
+            if (pergunta49) {
+			pergunta48 = false
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(f4.q10, 0, 0, canvas.width, canvas.height)
+                context.drawImage(imagem49, imagem_x, imagem_y, imagem_w, imagem_h)
+				for(i = 0; i< vidas4 ; i++) context.drawImage(estrelas,(vida.x * i) + 10,vida.y);
+              
+			  if (mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					mousepressed = false;
+					wins4 = true
+				}
+				
+				if(mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 15 && mouse_x <= 281 && mouse_y >= 600 && mouse_y <= 652 && mousepressed||
+                mouse_x >= 308 && mouse_x <= 575 && mouse_y >= 670 && mouse_y <= 720 && mousepressed)
+				{
+					vidas4 -=1;	
+					mousepressed = false;
+				}
+
+            }
+			if(wins4 == true ){
+			context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(vitoria4,0,0,canvas.width,canvas.height)
+			context.drawImage(continui4,continuix,continuiy,continuiw,continuih)
+			context.fillStyle = "#000000";
+			context.font = "80px Arial";
+			context.fillText(pontos4 + " pts" ,100, 760);
+			if (mouse_x >= 544 && mouse_x <= 599 && mouse_y >= 713 && mouse_y <= 757 && mousepressed){
+			mousepressed = false;
+			tela4 = false ;
+			main = false
+			tela3 = true
+			wins4 = false;
+			pergunta = true
+			
+			}}
+		
+		
+	}
+		function pontuacao()
+		{
+		if (tela == true && !wins1) pontos1 -= 1
+		if (tela2 == true && !wins2) pontos2 -= 1
+		if (tela3 == true && !wins3) pontos3 -= 1
+		if (tela4 == true && !wins4) pontos4 -= 1
+		
+		
+			setTimeout(pontuacao, 1000)
+        }
+      
+		function perdeu()
+		{
+			if (vidas <= 0){ context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(gameover, 0, 0, canvas.width, canvas.height);
+			context.drawImage(voltar, voltarx, voltary, voltarw, voltarh);}			
+			if (vidas2 <= 0){ context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(gameover, 0, 0, canvas.width, canvas.height);
+			context.drawImage(voltar, voltarx, voltary, voltarw, voltarh);}
+			if (vidas3 <= 0) { context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(gameover,0,0, canvas.width, canvas.height)
+			context.drawImage(voltar, voltarx, voltary, voltarw, voltarh)}
+			if (vidas4 <= 0){ context.clearRect(0, 0, canvas.width, canvas.height)
+			context.drawImage(gameover,0,0, canvas.width, canvas.height)
+			context.drawImage(voltar, voltarx, voltary, voltarw, voltarh)}
+		}
+
+        function loop() {
+            if (main == true) menu1();
+            if (tela == true) { fase1();  how = false ; credit = false;}
+            if (tela2 == true){ fase2();  how = false ; credit = false;}
+            if (tela3 == true){ fase3(); how = false ; credit = false;}
+            if (tela4 == true){ fase4(); how = false ; credit = false; }
+            if (how == true) wtf();
+			if (credit == true) nomes();
+            if (nivel == true) fases();
+		
+            setTimeout(loop, 30);
+            //console.log(teclas);
+        }
+	
+        loop();
+    </script>
+
+</body>
+
+</html>
